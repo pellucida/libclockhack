@@ -1,15 +1,13 @@
 ## libclockhack
-Intercept (LD_PRELOAD) library to set the time back/forward for a process 
-libclockhack — set the time backward/forward for a process by intercepting the relevant system calls.
+Set the time backward or forward for a process by intercepting the relevant system calls using
+`LD_PRELOAD` to have the runtime loader preload this library.
 
 A small shared library that intercepts the three system calls that linux processes use to get the current time
 viz
 
-time_t time (time_t* t);                                       -- time(2)
-
-int    gettimeofday (struct timeval* tv, struct timezone* tz); -- gettimeofday(2)
-
-int    clock_gettime (clockid_t clk_id, struct timespec* ts);  -- clock_gettime(2)
+    time_t time (time_t* t);                                       -- time(2)
+    int    gettimeofday (struct timeval* tv, struct timezone* tz); -- gettimeofday(2)
+    int    clock_gettime (clockid_t clk_id, struct timespec* ts);  -- clock_gettime(2)
 
 
 The offset in seconds from the current time is passed via the environment variable HACK_CLOCK_SHIFT.
@@ -28,11 +26,13 @@ Examples
 BUGS
 
 Should be able to fiddle it to work on most unix systems.
-If RTLD_NEXT isn't supported then accessing the real system calls using the syscall(2)
+If `RTLD_NEXT` isn't supported then accessing the real system calls using the `syscall(2)`
 interface is another option.
 
-NetBSD seems to rename gettimeofday to gettimeofday50 and has a slightly different prototype
+NetBSD seems to rename `gettimeofday` to `gettimeofday50` and has a slightly different prototype
 but does work after making this change.
+
+Obviously doesn't work for statically linked executables such as `/bin/date` on OpenBSD.
 
 LICENSE
 Creative Commons CC0 http://creativecommons.org/publicdomain/zero/1.0/legalcode
@@ -40,4 +40,3 @@ Creative Commons CC0 http://creativecommons.org/publicdomain/zero/1.0/legalcode
 AUTHOR
 James Sainsbury
 
-SEE ALSO
