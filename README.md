@@ -6,15 +6,18 @@ A small shared library that intercepts the three system calls that linux process
 viz
 
 time_t time (time_t* t);                                       -- time(2)
+
 int    gettimeofday (struct timeval* tv, struct timezone* tz); -- gettimeofday(2)
+
 int    clock_gettime (clockid_t clk_id, struct timespec* ts);  -- clock_gettime(2)
+
 
 The offset in seconds from the current time is passed via the environment variable HACK_CLOCK_SHIFT.
 Note: the apparent time still increases monotonically at a constant offset from the real time.
 
 Examples
 
-# date uses clock_gettime(2)
+ # date uses clock_gettime(2)
 /bin/date
 Mon Apr  8 21:02:35 EST 2013
 
