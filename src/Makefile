@@ -8,11 +8,13 @@ SO_CFLAGS	= -fPIC
 LDFLAGS	= -shared -Wl,-soname,$(SO)
 LDLIBS	= -ldl
 # NetBSD
-# SO_CLAGS	= -fPIC -DGETTIMEOFDAY50
+# SO_CFLAGS	= -fPIC -DGETTIMEOFDAY50
 # LDLIBS	=
 
 TESTPROG= testprog
 TESTOBJ	= testprog.o
+# Needed for clock_gettime()
+TESTLIBS	= -lrt
 
 all:	$(SO) $(TESTPROG)
 
@@ -24,7 +26,7 @@ $(SO):	$(OBJ)
 
 TESTOBJ	= testprog.o
 $(TESTPROG):	$(TESTOBJ)
-	$(CC) -o $(TESTPROG) $(TESTOBJ) -lrt
+	$(CC) -o $(TESTPROG) $(TESTOBJ) $(TESTLIBS)
 
 test:
 	@echo ""
