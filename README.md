@@ -1,4 +1,4 @@
-# libclockhack
+## libclockhack
 Intercept (LD_PRELOAD) library to set the time back/forward for a process 
 libclockhack — set the time backward/forward for a process by intercepting the relevant system calls.
 
@@ -17,12 +17,12 @@ Note: the apparent time still increases monotonically at a constant offset from 
 
 Examples
 
- # date uses clock_gettime(2)
-/bin/date
-Mon Apr  8 21:02:35 EST 2013
+    # date uses clock_gettime(2)
+    /bin/date
+    Mon Apr  8 21:02:35 EST 2013
 
-LD_PRELOAD=`pwd`/libclockhack.so HACK_CLOCK_SHIFT=-100000000 /bin/date
-Sat Feb  6 11:16:25 EST 2010
+    LD_PRELOAD=`pwd`/libclockhack.so HACK_CLOCK_SHIFT=-100000000 /bin/date
+    Sat Feb  6 11:16:25 EST 2010
 
 
 BUGS
