@@ -35,8 +35,9 @@ but does work after making this change.
 Obviously doesn't work for statically linked executables such as `/bin/date` on OpenBSD.
 
 LICENSE
-Creative Commons CC0 http://creativecommons.org/publicdomain/zero/1.0/legalcode
+Creative Commons CC0 [http://creativecommons.org/publicdomain/zero/1.0/legalcode]
+(http://creativecommons.org/publicdomain/zero/1.0/legalcode)  
 
 AUTHOR
-James Sainsbury
+[James Sainsbury](mailto:toves@sdf.lonestar.org)
 
