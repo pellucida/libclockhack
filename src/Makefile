@@ -2,7 +2,7 @@
 
 LIBSRC	= libclockhack.c
 OBJ	= libclockhack.o
-SO	= libclockhack.so
+SO	= libclockhack.so.0
 # Linux
 SO_CFLAGS	= -fPIC
 LDFLAGS	= -shared -Wl,-soname,$(SO)
