@@ -1,4 +1,6 @@
-
+/*
+//	@(#) constant.h
+*/
 # if	!defined( CONSTANT_H)
 # define	CONSTANT_H
 
