@@ -30,7 +30,7 @@ If `RTLD_NEXT` isn't supported then accessing the real system calls using the `s
 interface is another option.
 
 NetBSD seems to rename `gettimeofday` to `gettimeofday50` and has a slightly different prototype
-but does work after making this change.
+but did work after making this change.
 
 Obviously doesn't work for statically linked executables such as `/bin/date` on OpenBSD.
 
