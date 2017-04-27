@@ -27,7 +27,7 @@ $(SO):	$(OBJ)
 
 TESTOBJ	= testprog.o
 $(TESTOBJ):	$(TESTPROG).c
-	$(CC) $(TEST_CFLAGS) $<
+	$(CC) $(TEST_CFLAGS) $^
 
 $(TESTPROG):	$(TESTOBJ)
 	$(CC) -o $(TESTPROG) $(TESTOBJ) $(TESTLIBS)
