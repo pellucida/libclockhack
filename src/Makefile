@@ -1,30 +1,34 @@
 
 
-LIBSRC	= libclockhack.c
-OBJ	= libclockhack.o
+LIBSRC	= hack_time.c hack_gettimeofday.c hack_clock_gettime.c hack_init.c
+OBJ	= hack_time.o hack_gettimeofday.o hack_clock_gettime.o hack_init.o
 SO	= libclockhack.so.0
+
 # Linux
-SO_CFLAGS	= -fPIC
+CFLAGS	= -fPIC
 LDFLAGS	= -shared -Wl,-soname,$(SO)
 LDLIBS	= -ldl
-# NetBSD
-# SO_CFLAGS	= -fPIC -DGETTIMEOFDAY50
-# LDLIBS	=
+
 
 TESTPROG= testprog
 TESTOBJ	= testprog.o
+
 # Needed for clock_gettime()
 TESTLIBS	= -lrt
+TEST_CFLAGS	= -c 
 
 all:	$(SO) $(TESTPROG)
 
-$(OBJ):	$(LIBSRC)
-	$(CC) -c $(SO_CFLAGS) $(LIBSRC) -o $(OBJ)
+#$(OBJ):	$(LIBSRC)
+#	$(CC) -c $(SO_CFLAGS) $(LIBSRC) -o $(OBJ)
 
 $(SO):	$(OBJ)
 	$(CC) $(LDFLAGS) -o $(SO) $(OBJ) $(LDLIBS)
 
 TESTOBJ	= testprog.o
+$(TESTOBJ):	$(TESTPROG).c
+	$(CC) $(TEST_CFLAGS) $<
+
 $(TESTPROG):	$(TESTOBJ)
 	$(CC) -o $(TESTPROG) $(TESTOBJ) $(TESTLIBS)
 

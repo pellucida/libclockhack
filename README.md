@@ -1,8 +1,8 @@
 ## libclockhack
 Set the time backward or forward for a process by intercepting the relevant system calls using
-`LD_PRELOAD` to have the runtime loader preload this library.
+`LD_PRELOAD` to have the run time loader preload this library.
 
-A small shared library that intercepts the three system calls that linux processes use to get the current time
+A small shared library that intercepts the three system calls that Linux processes use to get the current time
 viz
 
     time_t time (time_t* t);                                       -- time(2)
