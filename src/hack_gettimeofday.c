@@ -4,7 +4,7 @@
 //	License: Creative Commons CC0 
 //		http://creativecommons.org/publicdomain/zero/1.0/legalcode
 //	Author:	James Sainsbury
-//		toves@sdf.lonestar.org
+//		toves@sdf.org
 //
 */
 # define	_GNU_SOURCE
